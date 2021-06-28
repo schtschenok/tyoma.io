@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Python for Game Audio: My Toolkit | Tyoma Makeev</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=fd11086a55" />
+
+	<script>
+			var siteUrl = 'https://tyoma.io';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+	</script>
+
+	<meta name="description" content="In this post, I&#x27;ll share the Python toolkit I use to create various tools for game audio implementation." />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://tyoma.io/python-for-game-audio-toolkit/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://tyoma.io/python-for-game-audio-toolkit/amp/" />
+    
+    <meta property="og:site_name" content="Tyoma Makeev" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Python for Game Audio: My Toolkit | Tyoma Makeev" />
+    <meta property="og:description" content="In this post, I&#x27;ll share the Python toolkit I use to create various tools for game audio implementation." />
+    <meta property="og:url" content="https://tyoma.io/python-for-game-audio-toolkit/" />
+    <meta property="og:image" content="https://tyoma.io/content/images/2021/02/python_abstract_v2.jpg" />
+    <meta property="article:published_time" content="2021-02-14T23:18:36.000Z" />
+    <meta property="article:modified_time" content="2021-02-28T23:43:11.000Z" />
+    <meta property="article:tag" content="Blog" />
+    <meta property="article:tag" content="Programming" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/tyomamakeev" />
+    <meta property="article:author" content="https://www.facebook.com/tyomamakeev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Python for Game Audio: My Toolkit | Tyoma Makeev" />
+    <meta name="twitter:description" content="In this post, I&#x27;ll share the Python toolkit I use to create various tools for game audio implementation." />
+    <meta name="twitter:url" content="https://tyoma.io/python-for-game-audio-toolkit/" />
+    <meta name="twitter:image" content="https://tyoma.io/content/images/2021/02/python_abstract_v2.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Tyoma Makeev" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Blog, Programming" />
+    <meta name="twitter:site" content="@schtschenok" />
+    <meta name="twitter:creator" content="@schtschenok" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1280" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tyoma Makeev",
+        "url": "https://tyoma.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://tyoma.io/favicon.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tyoma Makeev",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://tyoma.io/content/images/2021/02/photo_2021-02-19_01-18-49.jpg",
+            "width": 960,
+            "height": 960
+        },
+        "url": "https://tyoma.io/about/",
+        "sameAs": [
+            "https://www.facebook.com/tyomamakeev",
+            "https://twitter.com/schtschenok"
+        ]
+    },
+    "headline": "Python for Game Audio: My Toolkit | Tyoma Makeev",
+    "url": "https://tyoma.io/python-for-game-audio-toolkit/",
+    "datePublished": "2021-02-14T23:18:36.000Z",
+    "dateModified": "2021-02-28T23:43:11.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://tyoma.io/content/images/2021/02/python_abstract_v2.jpg",
+        "width": 1920,
+        "height": 1280
+    },
+    "keywords": "Blog, Programming",
+    "description": "In this post, I&#x27;ll share the Python toolkit I use to create various tools for game audio implementation.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tyoma.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.42" />
+    <link rel="alternate" type="application/rss+xml" title="Tyoma Makeev" href="https://tyoma.io/rss/" />
+    <!-- Color -->
+<style>
+:root {
+    --color-primary: #36d9d9;
+    --color-primary-active: #26bfbf;
+}
+</style>
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+	--font-primary: 'JetBrains Mono', sans-serif;
+	--font-secondary: 'JetBrains Mono', sans-serif;
+}
+</style>
+<!-- Search -->
+<script>
+var gh_search_key = '62fd587871fcd4d7a6788004c5';
+var gh_search_migration = 'v2';
+</script>
+<!-- Open external links in the new tab -->
+<script>
+let links = [...document.links].forEach((link) => {
+    if (link.hostname != window.location.hostname) {
+        link.target = '_blank'
+    }
+})
+</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ff1212">
+</head>
+
+<body class="post-template tag-blog tag-programming">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				<ul>
+		<li class="nav-blog"><a href="https://tyoma.io/"><span>Blog</span></a></li>
+		<li class="nav-about"><a href="https://tyoma.io/about/"><span>About</span></a></li>
+</ul>
+
+				<ul class="nav-meta">
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/schtschenok" title="@schtschenok" target="_blank">
+      <i class="icon icon-twitter" aria-hidden="true"></i>
+      <span>@schtschenok</span>
+    </a>
+  </li>
+  <li class="nav-facebook">
+    <a aria-label="Facebook" href="https://www.facebook.com/tyomamakeev" title="tyomamakeev" target="_blank">
+      <i class="icon icon-facebook" aria-hidden="true"></i>
+      <span>tyomamakeev</span>
+    </a>
+  </li>
+  <li class="nav-search" style="display: none;">
+    <a title="Search">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+  <!--
+    <li class="nav-subscribe">
+      <a href="#/portal">Subscribe</a>
+    </li>
+  -->
+</ul>
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+				<a class="nav-search" style="display: none;" title="Search" role="button"><i class="icon icon-search" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+		
+
+<div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<header class="post-header  has-cover ">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			<span class="post-count">Blog</span>
+		</span>
+		<h1 class="post-title">Python for Game Audio: My Toolkit</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+					<figure class="post-meta-avatar avatar">
+						<a href="/about/" class="author-avatar">
+								<img class="author-profile-image" src="/content/images/2021/02/photo_2021-02-19_01-18-49.jpg" alt="Tyoma Makeev" />
+						</a>
+					</figure>
+			</div>
+			<h4 class="post-meta-author"><a href="/about/">Tyoma Makeev</a></h4>
+			<time datetime="15-02-2021">15 Feb 2021</time> &bull; 6 min read
+		</div>
+		<div class="post-cover cover">
+			<img
+			srcset="/content/images/size/w320/2021/02/python_abstract_v2.jpg 320w,
+              /content/images/size/w640/2021/02/python_abstract_v2.jpg 640w,
+              /content/images/size/w960/2021/02/python_abstract_v2.jpg 960w,
+              /content/images/size/w1920/2021/02/python_abstract_v2.jpg 1920w"
+      src="/content/images/size/w1920/2021/02/python_abstract_v2.jpg"
+			alt="Python for Game Audio: My Toolkit" />
+		</div>
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="post tag-blog tag-programming">
+		<div class="inner">
+
+			<section class="post-content">
+				<p>In this post, I'll share the Python toolkit I use to create various tools for game audio implementation.</p><p><strong>DISCLAIMER:</strong> I'm not a professional programmer in any possible way. All these things I'll be talking about are not Python's best practices or universally-good pieces of advice. These are simply the tools that I, being a Technical Audio Designer, personally found useful for my job.</p><h2 id="so-python-for-game-audio">So, Python for Game Audio?</h2><p>I believe that Python is one of the best programming languages a Technical Audio Designer can learn. Not only because it is easy to learn, has a big community, is well-supported, and has a lot of libraries, but also because it easily interfaces with the industry-standard tools, such as:</p><ul><li>Wwise (via <a href="https://github.com/audiokinetic/waapi-client-python">WAAPI Client for Python</a>),</li><li>Unreal Engine 4 (via <a href="https://docs.unrealengine.com/en-US/PythonAPI/index.html">Unreal Python API</a>),</li><li>REAPER (via <a href="https://www.reaper.fm/sdk/reascript/reascripthelp.html#p">ReaScript Python API</a> or <a href="https://github.com/RomeoDespres/reapy">Reapy library</a>),</li><li>Google Sheets (via <a href="https://developers.google.com/sheets/api/quickstart/python">Google Sheets API</a>),</li><li>and many more.</li></ul><p>I'm using Python to automate a broad range of tasks, and I can't imagine doing my job without it.</p><h2 id="development-tools">Development Tools</h2><p>Here I'll be talking about the tools I use to write Python code.</p><h3 id="python-3">Python 3</h3><p>Well, to program with Python, you'll need <a href="https://www.python.org/">Python</a>.</p><p>There are two main versions of Python: Python 2 and Python 3. I strongly recommend using Python 3. <a href="https://wiki.python.org/moin/Python2orPython3">Here's why</a>.</p><p>If you're on Windows, I'll suggest getting Python 3 from its <a href="https://www.python.org/downloads/">official website</a>. If you're on macOS, it's better to use a package manager such as <a href="https://brew.sh/">Homebrew</a> since it'll allow you to manage multiple versions of Python easily. On Windows, you may also use <a href="https://chocolatey.org/">Chocolatey</a> package manager, though I haven't tried it for Python yet.</p><h3 id="pycharm-community">PyCharm Community</h3><p><a href="https://www.jetbrains.com/pycharm/">PyCharm Community by JetBrains</a> is an IDE (integrated development environment, which is a fancy way of saying "text editor that can do a lot of stuff"). It's free; it's fast; it's awesome.</p><p>There are two versions of PyCharm: Community and Professional. I use the Community and don't ever feel the need to go with the Professional.</p><p>There are some folks (usually the ones with extensive programming background) who prefer "simpler" (not really, in my opinion) and more configurable editors such as <a href="https://atom.io/">Atom</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>, <a href="https://code.visualstudio.com/">Visual Studio Code</a>, or even <a href="https://www.vim.org/">Vim</a>. However, I believe that PyCharm is simply the best tool to do the job quickly and comfortably, without digging into all the settings too much or learning many weird keyboard shortcuts.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://tyoma.io/content/images/2021/02/real_programmers-1.png" class="kg-image" alt srcset="https://tyoma.io/content/images/size/w600/2021/02/real_programmers-1.png 600w, https://tyoma.io/content/images/2021/02/real_programmers-1.png 740w" sizes="(min-width: 720px) 720px"><figcaption>Real Programmers. Source: XKCD, https://xkcd.com/378/</figcaption></figure><h3 id="tabnine">TabNine</h3><p><a href="https://www.tabnine.com/">TabNine</a> is an autocomplete plugin for PyCharm. It uses Ai and deep learning to predict what I would write next and suggest that to me automagically.</p><p>While there is a perfectly good <a href="https://www.jetbrains.com/help/pycharm/auto-completing-code.html">autocomplete already built into PyCharm</a>, TabNine takes it to another level by providing the autofill for the whole lines of code, strings, and other code parts that I would usually be writing by hand. It's hard to overestimate how much time it saves. Here is an example:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://tyoma.io/content/images/2021/02/image-1.png" class="kg-image" alt srcset="https://tyoma.io/content/images/size/w600/2021/02/image-1.png 600w, https://tyoma.io/content/images/2021/02/image-1.png 711w"><figcaption>A screenshot of the TabNine autocompletion results in PyCharm.</figcaption></figure><p>Let me explain what's going on in this picture. I wrote a single line, <code>first_thing = "String number one"</code>. When I started to write <code>seco</code>, not only TabNine suggested continuing it as a <code>second_thing</code>, it also guessed that the <code>second_thing</code>'s value would be <code>"String number two"</code>, and I never mentioned the word "two" anywhere in my code. It understands the underlying semantics of my code, which makes it super-awesome. It also learns from my code (doing it privately on my computer), getting better the more I use it.</p><h2 id="python-libraries">Python Libraries</h2><p>In this part, I'll be talking about Python libraries I use and love the most. Most of them don't work directly with audio, but I still find them incredibly helpful. I'll keep the library's descriptions short so that this post won't end up too big.</p><h3 id="pathlib">Pathlib</h3><p><a href="https://docs.python.org/3/library/pathlib.html">Pathlib</a> is the only library in this list that's a part of The Python Standard Library (which means you already have it, if you have Python).</p><p>It's a handy library for everything related to paths, files, folders, and filesystem. There are some "older" ways of working with paths in Python, such as <code>os.path</code>, though I find Pathlib much more convenient to use in almost all cases.</p><p><strong>Tip:</strong> you can concatenate paths with <code>/</code> operator (<code>combined_path = first_path / second_path</code>), which I find pretty cool.</p><h3 id="loguru">Loguru</h3><p><a href="https://github.com/Delgan/loguru">Loguru</a> is an easy-to-use logging library and a better alternative to using <code>print()</code> to debug the code and show valuable info on the screen. Here is how it looks:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://tyoma.io/content/images/2021/02/image-2.png" class="kg-image" alt srcset="https://tyoma.io/content/images/size/w600/2021/02/image-2.png 600w, https://tyoma.io/content/images/size/w1000/2021/02/image-2.png 1000w, https://tyoma.io/content/images/size/w1600/2021/02/image-2.png 1600w, https://tyoma.io/content/images/2021/02/image-2.png 1878w" sizes="(min-width: 720px) 720px"><figcaption>A screenshot of the Loguru output in PyCharm.</figcaption></figure><h3 id="numpy">NumPy</h3><p><a href="https://numpy.org/">NumPy</a> (Numerical Python) is an enormously powerful library for working with n-dimensional arrays. Why is it relevant? Because when I'm working with audio, the chances are that the audio data I'm working with is represented as an n-dimensional array. While Python supports a lot of kinds of arrays out-of-the-box, NumPy does it much faster, easier, and has a whole lot of additional tools. Also, there are some pretty fast math functions in Numpy that are not only working with Numpy arrays but also with the usual float numbers.</p><p>Whenever I need to do some audio analysis or offline DSP processing in Python, I'll probably end up using NumPy or SciPy, either directly or through other higher-level libraries that use them under the hood.</p><h3 id="scipy">SciPy</h3><p><a href="https://scipy.org/">SciPy</a> (Scientific Python) is a library with digital filters and other DSP-related things in its <a href="https://docs.scipy.org/doc/scipy/reference/signal.html">scipy.signal</a> part.</p><h3 id="matplotlib">Matplotlib</h3><p><a href="https://matplotlib.org/stable/index.html">Matplotlib</a> is my go-to library for drawing plots and visualizing data, useful for audio and many other things. The closest alternative is <a href="https://plotly.com/python/">Plotly</a>, but I find it a bit harder to setup.</p><h3 id="soundfile">SoundFile</h3><p><a href="https://github.com/bastibe/PySoundFile">SoundFile</a> is a library based on <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a> (a quite popular C library) and NumPy, which makes reading audio files in Python easy.</p><h3 id="reapy">Reapy</h3><p><a href="https://github.com/RomeoDespres/reapy">Reapy</a> is a <a href="https://www.reaper.fm/sdk/reascript/reascripthelp.html#p">ReaScript Python API</a> wrapper. It makes it possible to write scripts for the <a href="https://www.reaper.fm/">REAPER</a> in Python, using my own Python 3 interpreter, not the <a href="https://www.reaper.fm/sdk/reascript/reascript.php#reascript_req_py">one that should be run from the REAPER itself</a>. In other words, I can use a lot more different libraries and write REAPER scripts much more comfortably.</p><h3 id="puremagic">Puremagic</h3><p><a href="https://github.com/cdgriffith/puremagic">Puremagic</a> is a pure Python library for reading file's <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)">magic numbers</a>. It allows me to check file types more reliably than merely by the file name extensions.</p><h3 id="requests">Requests</h3><p><a href="https://requests.readthedocs.io/en/master/">Requests</a> is one of the most popular Python libraries ever! And I use it for everything related to HTTP requests and getting something from the internet.</p><h3 id="pandas">Pandas</h3><p><a href="https://pandas.pydata.org/">Pandas</a> is a data manipulation library that I use for data that's somewhat similar to our usual Excel spreadsheets. When I have something that looks like a table with rows, columns, and different data types - I usually go with Pandas.</p><h3 id="librosa">Librosa</h3><p><a href="https://librosa.org/">Librosa</a> is an audio analysis library. It's a bit higher-level than SciPy, thus a bit easier to use.</p><h3 id="click">Click</h3><p><a href="https://click.palletsprojects.com/">Click</a> is a beautiful library for building CLIs (command-line interfaces). It's easy to use and allows me to create CLI programs without bothering much with the built-in <a href="https://docs.python.org/3/library/argparse.html">argparse</a>.</p><h3 id="p4python">P4Python</h3><p><a href="https://pypi.org/project/p4python/">P4Python</a> is a Perforce API library that helps me build workflows that use the Perforce version control system.</p><h3 id="colorama">Colorama</h3><p><a href="https://pypi.org/project/colorama/"><a href="https://github.com/tartley/colorama">Colorama</a></a> is a library that allows me to use colors in my program's output.</p><h3 id="pyfiglet">Pyfiglet</h3><p><a href="https://github.com/pwaller/pyfiglet">Pyfiglet</a> is an ASCII art library. I use it to draw beautiful welcome messages for my CLI programs. Like this:</p><figure class="kg-card kg-code-card"><pre><code>HHHHHHHHH     HHHHHHHHH                                            !!! 
+H:::::::H     H:::::::H                                           !!:!!
+H:::::::H     H:::::::H                                           !:::!
+HH::::::H     H::::::HH                                           !:::!
+  H:::::H     H:::::H      eeeeeeeeeeee  yyyyyyy           yyyyyyy!:::!
+  H:::::H     H:::::H    ee::::::::::::ee y:::::y         y:::::y !:::!
+  H::::::HHHHH::::::H   e::::::eeeee:::::eey:::::y       y:::::y  !:::!
+  H:::::::::::::::::H  e::::::e     e:::::e y:::::y     y:::::y   !:::!
+  H:::::::::::::::::H  e:::::::eeeee::::::e  y:::::y   y:::::y    !:::!
+  H::::::HHHHH::::::H  e:::::::::::::::::e    y:::::y y:::::y     !:::!
+  H:::::H     H:::::H  e::::::eeeeeeeeeee      y:::::y:::::y      !!:!!
+  H:::::H     H:::::H  e:::::::e                y:::::::::y        !!! 
+HH::::::H     H::::::HHe::::::::e                y:::::::y             
+H:::::::H     H:::::::H e::::::::eeeeeeee         y:::::y          !!! 
+H:::::::H     H:::::::H  ee:::::::::::::e        y:::::y          !!:!!
+HHHHHHHHH     HHHHHHHHH    eeeeeeeeeeeeee       y:::::y            !!! 
+                                               y:::::y                 
+                                              y:::::y                  
+                                             y:::::y                   
+                                            y:::::y                    
+                                           yyyyyyy                     </code></pre><figcaption>Hey!</figcaption></figure><h2 id="really-important-advice">Really important advice</h2><p>Always use <a href="https://www.python.org/dev/peps/pep-0484/">type hints</a> in Python.</p>
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Python for Game Audio: My Toolkit&url=https://tyoma.io/python-for-game-audio-toolkit/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://tyoma.io/python-for-game-audio-toolkit/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://tyoma.io/python-for-game-audio-toolkit//&amp;title=Python for Game Audio: My Toolkit" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Python for Game Audio: My Toolkit&amp;body=https://tyoma.io/python-for-game-audio-toolkit/">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					<a href="/tag/blog/">Blog</a> <a href="/tag/programming/">Programming</a>
+				</aside>
+
+			</section>
+
+
+			<section class="post-comments">
+				<a id="show-disqus" class="post-comments-activate">Show Comments</a>
+			   <div id="disqus_thread"></div>
+			</section>
+
+
+			<aside class="post-nav">
+
+
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+
+
+
+		<div class="search-wrapper">
+			<div class="search">
+		    <form class="search-form">
+          <input class="search-field" type="text" placeholder="Search …">
+          <button class="search-button" type="submit">
+						<i class="icon icon-search" aria-hidden="true"></i>
+					</button>
+		    </form>
+				<div class="popular-wrapper">
+					<h4 class="popular-title">Topics</h4>
+					<span class="popular-tags post-tags">
+								<a href='/tag/blog/'>Blog: 1</a>
+								<a href='/tag/programming/'>Programming: 1</a>
+					</span>
+				</div>
+				<div class="search-result"></div>
+			</div>
+			<button class="search-wrapper-close" aria-label="Close"></button>
+		</div>
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">Tyoma Makeev &copy; 2021  <a class="nav-rss" title="RSS" href="https://tyoma.io/rss/" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></span>
+				<span class="nav-credits">Published with <a href="https://ghost.org">Ghost</a> &bull; Theme <a href="https://github.com/zutrinken/attila">Attila</a> &bull; <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme"><span class="theme-icon"></span><span class="theme-text">System theme</span> </a> </span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.js?v=fd11086a55"></script>
+
+	<script>
+  $(document).ready(function () {
+		var viewport = $(window);
+		var post = $('.post-content');
+		// Responsive videos with fitVids
+    post.fitVids();
+		// Format code blocks and add line numbers
+		function codestyling() {
+	    $('pre code').each(function(i, e) {
+				// Code highlight
+	      hljs.highlightBlock(e);
+	      // No lines for plain text blocks
+	      if (!$(this).hasClass('language-text')) {
+	        var code = $(this);
+					// Calculate amount of lines
+	        var lines = code.html().split(/\n(?!$)/g).length;
+	        var numbers = [];
+	        if (lines > 1) {
+	          lines++;
+	        }
+	        for (i = 1; i < lines; i++) {
+	          numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+	        }
+	        code.parent().append('<div class="lines">' + numbers + '</div>');
+	      }
+	    });
+	  }
+	  codestyling();
+		// Reading progress bar on window top
+	  function readingProgress() {
+			var postBottom = post.offset().top + post.height();
+			var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+	  }
+	  readingProgress();
+		// Trigger reading progress
+	  viewport.on({
+	    'scroll': function() {
+	      readingProgress();
+	    },
+	    'resize': function() {
+	      readingProgress();
+	    },
+	    'orientationchange': function() {
+	      readingProgress();
+	    }
+	  });
+		// Check if disqus is defined by code injection
+		if (typeof disqus === 'undefined') {
+			// hide comment section
+	    $('.post-comments').css({
+	      'display': 'none'
+	    });
+	  } else {
+	    $('#show-disqus').on('click', function() {
+	      $.ajax({
+	        type: "GET",
+	        url: "//" + disqus + ".disqus.com/embed.js",
+	        dataType: "script",
+	        cache: true
+	      });
+	      $(this).parent().addClass('activated');
+	    });
+	  }
+  });
+</script>
+
+
+	<!-- Navigation social icons -->
+<style>
+.icon-search {
+	color: var(--color-primary);
+}
+
+.icon-search:hover {
+	color: var(--color-primary-active);
+}
+</style>
+<style>
+@media screen and (max-width: 640px) {
+	.nav-header ul.nav-meta {
+		flex-direction: column !important;
+	}
+	.nav-meta li {
+		display: flex !important;
+	}
+}
+</style>
+<style>
+.nav-twitter {
+	display: none !important;
+}
+</style>
+<script>
+if(document.getElementsByClassName("nav-meta") !== null) {
+	var nav_meta = document.getElementsByClassName("nav-meta")[0];
+	var linkedin = document.createElement("li");
+	linkedin.className = "nav-linkedin";
+	linkedin.innerHTML = '<a aria-label="Linkedin" href="https://www.linkedin.com/in/schtschenok" title="schtschenok" target="_blank"><i class="icon icon-linkedin" aria-hidden="true"></i><span>schtschenok</span></a>';
+	var instagram = document.createElement("li");
+	instagram.className = "nav-instagram";
+	instagram.innerHTML = '<a aria-label="Instagram" href="https://www.instagram.com/tyomamakeev" title="tyomamakeev" target="_blank"><i class="icon icon-instagram" aria-hidden="true"></i><span>tyomamakeev</span></a>';
+	var github = document.createElement("li");
+	github.className = "nav-github";
+	github.innerHTML = '<a aria-label="Github" href="https://github.com/schtschenok" title="schtschenok" target="_blank"><i class="icon icon-github" aria-hidden="true"></i><span>schtschenok</span></a>';
+	var telegram = document.createElement("li");
+	telegram.className = "nav-telegram";
+	telegram.innerHTML = '<a aria-label="Telegram" href="https://t.me/schtschenok" title="schtschenok" target="_blank"><i class="icon icon-telegram" aria-hidden="true"></i><span>schtschenok</span></a>';
+	nav_meta.prepend(telegram);
+	nav_meta.prepend(github);
+	nav_meta.prepend(instagram);
+	nav_meta.prepend(linkedin);
+}
+</script>
+<!-- Social links on the Author page -->
+<style>
+.archive .archive-links a {
+	margin-right: 0.5em;
+}
+</style>
+<style>
+.archive .archive-links a:nth-child(5) {
+	display: none;
+}
+</style>
+<script>
+b_archive_links = document.getElementsByClassName("archive-links").length !== 0;
+b_archive_title = document.getElementsByClassName("archive-title").length !== 0;
+if(b_archive_links && b_archive_title) {
+	b_tyoma = document.getElementsByClassName("archive-title")[0].textContent === "Tyoma Makeev";
+} else {
+	b_tyoma = false;
+}
+if(b_tyoma) {
+	function createElementFromHTML(htmlString) {
+		var div = document.createElement('div');
+		div.innerHTML = htmlString.trim();
+		return div.firstChild;
+	}
+	var archive_links = document.getElementsByClassName("archive-links")[0];
+	var linkedin = createElementFromHTML('<a target="_blank" href="https://www.linkedin.com/in/schtschenok" title="Linkedin"><i class="icon icon-linkedin"></i><span>Linkedin</span></a>');
+	var instagram = createElementFromHTML('<a target="_blank" href="https://www.instagram.com/tyomamakeev" title="Instagram"><i class="icon icon-instagram"></i><span>Instagram</span></a>');
+	var github = createElementFromHTML('<a target="_blank" href="https://github.com/schtschenok" title="Github"><i class="icon icon-github"></i><span>Github</span></a>');
+	var telegram = createElementFromHTML('<a target="_blank" href="https://t.me/schtschenok" title="Telegram"><i class="icon icon-telegram"></i><span>Telegram</span></a>');
+	archive_links.prepend(telegram);
+	archive_links.prepend(github);
+	archive_links.prepend(instagram);
+	archive_links.prepend(linkedin);
+	archive_links.style.display = 'none';
+	archive_links.style.display = 'flex';
+}
+</script>
+<!-- My bio on the Author page -->
+<style>
+#tyoma-bio a {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 var(--color-primary);
+}
+#tyoma-bio a:hover {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 var(--color-primary-active);
+}
+</style>
+<script>
+if(document.getElementById('tyoma-bio') !== null) {
+	tyoma_bio = "Hi there!<br>My name is Tyoma, I work as a Technical Audio Designer for Games.<br><br>Please feel free to contact me via <a href='mailto:tyomamakeev@gmail.com'>tyomamakeev@gmail.com</a> or using the social links below.;
+	document.getElementById("tyoma-bio").innerHTML = tyoma_bio;
+};
+</script>
+<!-- Analytics -->
+<!-- https://getinsights.io/ -->
+<script src="https://getinsights.io/js/insights.js"></script>
+<script>
+insights.init('gl9a2gTsZJIKUKWT');
+insights.trackPages();
+</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b85a6381fd884d8faa9fb1fbfbdacd3e"}'></script>
+
+</body>
+</html>
