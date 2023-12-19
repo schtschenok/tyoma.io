@@ -2,22 +2,22 @@
 # https://github.com/riggraz/no-style-please#customize-the-menu
 
 entries:
-  - title: contacts
+  - title: Links
     entries:
-      - title: linkedin
+      - title: Linkedin
         url: https://www.linkedin.com/in/schtschenok
-      - title: telegram
+      - title: Telegram
         url: https://t.me/schtschenok
-      - title: instagram
+      - title: Instagram
         url: https://www.instagram.com/tyomamakeev
-      - title: github
+      - title: Github
         url: https://github.com/schtschenok
-      - title: email
+      - title: tyomamakeev@gmail.com
         url: "mailto:tyomamakeev@gmail.com"
 
-  - title: posts
+  - title: Posts
     post_list:
       limit: 100
 
-  - title: rss
+  - title: RSS
     url: feed.xml
