@@ -1,0 +1,23 @@
+# For documentation on this file, see:
+# https://github.com/riggraz/no-style-please#customize-the-menu
+
+entries:
+  - title: contacts
+    entries:
+      - title: linkedin
+        url: https://www.linkedin.com/in/schtschenok
+      - title: telegram
+        url: https://t.me/schtschenok
+      - title: instagram
+        url: https://www.instagram.com/tyomamakeev
+      - title: github
+        url: https://github.com/schtschenok
+      - title: email
+        url: "mailto:tyomamakeev@gmail.com"
+
+  - title: posts
+    post_list:
+      limit: 100
+
+  - title: rss
+    url: feed.xml
