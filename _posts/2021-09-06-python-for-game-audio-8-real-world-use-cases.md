@@ -3,6 +3,7 @@ layout: post
 title: "Python for Game Audio: 8 Real-World Use Cases"
 slug: python-for-game-audio-use-cases
 date: 2021-09-06
+description: In this post, I talk about game audio problems that I solved using Python language.
 ---
 
 In this post, I talk about some Python scripts I've written throughout my career, describing the problems each of them solves. I won't share any sources for these scripts, both because I'm not allowed to do so and because I believe that the whole point of using Python for game audio is creating custom, tailored solutions for very specific problems. I believe that sharing the scripts themselves won't benefit the readers, but I hope that sharing a mindset along with the thought process will.

@@ -3,6 +3,7 @@ layout: post
 title: "Python for Game Audio: My Toolkit"
 slug: python-for-game-audio-toolkit
 date: 2021-02-15
+description: In this post, I share the Python toolkit I use to create various tools for game audio implementation.
 ---
 
 In this post, I share the Python toolkit I use to create various tools for game audio implementation.
