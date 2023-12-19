@@ -24,7 +24,7 @@ email: tyomamakeev@gmail.com
 description: >-
   Technical audio designer for games.
 baseurl: ""
-url: "https://tyoma.io/"
+url: "https://dev.tyoma.io/"
 
 favicon: "logo.png"
 
@@ -47,6 +47,10 @@ plugins:
   - jekyll-sitemap
   - jekyll-youtube
   - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - LICENSE
 
 # Exclude from processing.
 # The following items will not be processed, by default.
