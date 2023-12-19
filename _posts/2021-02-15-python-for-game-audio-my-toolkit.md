@@ -50,7 +50,7 @@ There are some folks (usually the ones with extensive programming background) wh
 
 While there is a perfectly good [autocomplete already built into PyCharm](https://www.jetbrains.com/help/pycharm/auto-completing-code.html), TabNine takes it to another level by providing autofill for whole lines of code, strings, and other code parts that I would usually be writing by hand. It's hard to overestimate how much time it saves. Here is an example:
 
-![A screenshot of the TabNine autocompletion results in PyCharm.](assets/media/tabnine-autocomplete-python-example.png)
+![A screenshot of the TabNine autocompletion results in PyCharm.](media/tabnine-autocomplete-python-example.png)
 
 Let me explain what's going on in this picture. I wrote a single line, `first_thing = "String number one"`. When I started to write `seco`, not only did TabNine suggest continuing it as a `second_thing`, but it also guessed that the `second_thing`'s value would be `"String number two"`, and I never mentioned the word "two" anywhere in my code. It understands the underlying semantics of my code, which makes it super-awesome. It also learns from my code (doing it privately on my computer), getting better the more I use it.
 
@@ -70,7 +70,7 @@ It's a handy library for everything related to paths, files, folders, and filesy
 
 [Loguru](https://github.com/Delgan/loguru) is an easy-to-use logging library and a better alternative to using `print()` to debug the code and show valuable info on the screen. Here is how it looks:
 
-![A screenshot of the Loguru output in PyCharm.](assets/media/loguru-logging-python-example.png)
+![A screenshot of the Loguru output in PyCharm.](media/loguru-logging-python-example.png)
 
 ### NumPy
 
