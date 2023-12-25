@@ -28,7 +28,7 @@ url: "https://tyoma.io/"
 
 favicon: "logo.png"
 
-permalink: /:slug
+permalink: /:slug/
 
 theme: no-style-please
 
