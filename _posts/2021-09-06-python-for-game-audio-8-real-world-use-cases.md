@@ -34,7 +34,7 @@ The built-in profiler in FMOD Studio does not create any profiling reports that 
 
 Add some FMOD stats to the [UE4 CSV Profiler](https://docs.unrealengine.com/4.26/en-US/TestingAndOptimization/PerformanceAndProfiling/CSVProfiler/), write docs describing the way profiling data should be collected (i.e. "for 10 minutes of gameplay starting at the first level"). Then, write a Python script that draws beautiful XKCD-styled plots based on the collected data, saves them as pictures, and packs everything up in a ZIP archive.
 
-![Example of the CPU profiling results plotted by quantiles](media/fmod-profiling-summary-generator-example.png)
+![Example of the CPU profiling results plotted by quantiles](/media/fmod-profiling-summary-generator-example.png)
 
 ### Tech
 
@@ -63,7 +63,7 @@ Write a script that:
 
 If the file has been deleted, this script would only show that it's been deleted, without showing you the actual FMOD entity name or type. This can be fixed by getting the previous revision of the deleted file from Perforce, but I decided not to do this.
 
-![Example of the FMOD Perforce Diff Viewer output](media/fmod-perforce-diff-viewer-example.png)
+![Example of the FMOD Perforce Diff Viewer output](/media/fmod-perforce-diff-viewer-example.png)
 
 ### Tech
 
@@ -84,7 +84,7 @@ From time to time, audio files with the wrong channel count, sample rate, volume
 
 Write a script that generates a report on each of the audio files in a selected folder, comparing the measured properties to the reference values.
 
-![Example of the Audio File Validator output](media/audio-file-validator-example.png)
+![Example of the Audio File Validator output](/media/audio-file-validator-example.png)
 
 ### Tech
 
@@ -104,7 +104,7 @@ Sometimes we need to generate text-to-speech placeholders for VO lines. When the
 
 Write a small GUI application that allows me to generate single VO lines using Google Cloud TTS, with an option to select a voice model and speed.
 
-![A small tool to test and generate the Google Cloud TTS voices](media/google-cloud-tts-tool-example.png)
+![A small tool to test and generate the Google Cloud TTS voices](/media/google-cloud-tts-tool-example.png)
 
 ### Tech
 
