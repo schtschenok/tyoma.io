@@ -67,7 +67,7 @@ I ended up with the Topping DX1, which both looks great, has a very nice-feeling
 
 ## Some device suggestions
 
-I tried to find some DACs with headphone preamps that are not too expensive (<$200) and use Thesycon drivers.
+I tried to find some DACs with headphone preamps that are not too expensive (i.e. there are sub-$200 options) and use Thesycon drivers.
 
 Here’s what I found:
 
