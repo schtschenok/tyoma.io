@@ -54,10 +54,10 @@ So, let’s say you’re looking at some consumer DAC with a headphone preamp to
     
     ![Thesycon control panel window.](/media/thesycon-driver-window.png)
     
-3. Next - try to find some reviews and measurements! I won’t be going deep into this - you’ll need to do your own research on understanding the numbers and everything, but looking for reviews on either [Audio Science Review](https://www.audiosciencereview.com/) or [L7Audiolab](https://www.l7audiolab.com/) (it's in Chinese, but works well with in-browser translation) might be helpful in understanding whether it’s an actually good audio interface.
-4. Make sure the drivers are up to date. The latest version of Thesycon drivers at the moment of writing this article is around 5.60-something. It’s easy to find the current version of Thesycon drivers using Google. If the version on the manufacturer’s website is very old compared to the one you found - it means that there might be some compatibility issues on newer Windows versions.
-5. Contact the manufacturer and make absolutely sure that it supports the simultaneous output of ASIO and WDM.
-6. That’s it!
+2. Next - try to find some reviews and measurements! I won’t be going deep into this - you’ll need to do your own research on understanding the numbers and everything, but looking for reviews on either [Audio Science Review](https://www.audiosciencereview.com/) or [L7Audiolab](https://www.l7audiolab.com/) (it's in Chinese, but works well with in-browser translation) might be helpful in understanding whether it’s an actually good audio interface.
+3. Make sure the drivers are up to date. The latest version of Thesycon drivers at the moment of writing this article is around 5.60-something. It’s easy to find the current version of Thesycon drivers using Google. If the version on the manufacturer’s website is very old compared to the one you found - it means that there might be some compatibility issues on newer Windows versions.
+4. Contact the manufacturer and make absolutely sure that it supports the simultaneous output of ASIO and WDM.
+5. That’s it!
 
 ## My own experience
 
