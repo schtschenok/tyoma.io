@@ -2,7 +2,7 @@
 layout: post
 title: "Choosing a Professional Audio Interface Among Consumer DACs"
 slug: consumer-dac-as-pro-audio-interface
-date: 2024-02-28
+date: 2024-02-27
 description: In this post, I talk about the suitability of consumer DACs as professional audio interfaces for Game Audio.
 ---
 
