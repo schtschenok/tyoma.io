@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Choosing a Professional Audio Interface Among Consumer DACs"
+slug: consumer-dac-as-pro-audio-interface
+date: 2024-02-28
+description: In this post, I talk about the suitability of consumer DACs as professional audio interfaces for Game Audio.
+---
+
 ## TL;DR
 
 Certain consumer DACs using Thesycon drivers can be suitable for professional use, as they likely support simultaneous ASIO and WDM output, making them a viable and cost-effective option for professional audio work for people not requiring any inputs on their audio interface.
