@@ -32,7 +32,7 @@ There’s a whole lot of China-based manufacturers for consumer audiophile-grade
 
 1. Ones that don’t support ASIO at all;
 2. Ones that support ASIO and use drivers made by ComTrue Inc. or Savitech Corp.;
-3. Ones that support ASIO and use drivers made by Thesycon.
+3. Ones that support ASIO and use drivers made by [Thesycon](https://www.thesycon.de/eng/home.shtml).
 
 The first category isn’t suitable for professional use at all as it doesn’t support ASIO. The second one would be a pain to work with since ComTrue and Savitech ASIO drivers make ASIO exclusive - so when some software is pushing audio through ASIO, the WDM (regular Windows sound) will shut off completely.
 
@@ -52,10 +52,12 @@ So, let’s say you’re looking at some consumer DAC with a headphone preamp to
     
     The easier way is just opening the control panel for the device and making sure the window looks exactly like this (with the only difference being the manufacturer name in the window title):
     
-2. Next - try to find some reviews and measurements! I won’t be going deep into this - you’ll need to do your own research on understanding the numbers and everything, but looking for reviews on either https://www.audiosciencereview.com/ or https://www.l7audiolab.com/ might be helpful in understanding whether it’s an actually good audio interface.
-3. Make sure the drivers are up to date. The latest version of Thesycon drivers at the moment of writing this article is around 5.60-something. It’s easy to find the current version of Thesycon drivers using Google. If the version on the manufacturer’s website is very old compared to the one you found - it means that there might be some compatibility issues on newer Windows versions.
-4. Contact the manufacturer and make absolutely sure that it supports the simultaneous output of ASIO and WDM.
-5. That’s it!
+    ![Thesycon control panel window.](/media/thesycon-driver-window.png)
+    
+3. Next - try to find some reviews and measurements! I won’t be going deep into this - you’ll need to do your own research on understanding the numbers and everything, but looking for reviews on either [Audio Science Review](https://www.audiosciencereview.com/) or [L7Audiolab](https://www.l7audiolab.com/) (it's in Chinese, but works well with in-browser translation) might be helpful in understanding whether it’s an actually good audio interface.
+4. Make sure the drivers are up to date. The latest version of Thesycon drivers at the moment of writing this article is around 5.60-something. It’s easy to find the current version of Thesycon drivers using Google. If the version on the manufacturer’s website is very old compared to the one you found - it means that there might be some compatibility issues on newer Windows versions.
+5. Contact the manufacturer and make absolutely sure that it supports the simultaneous output of ASIO and WDM.
+6. That’s it!
 
 ## My own experience
 
